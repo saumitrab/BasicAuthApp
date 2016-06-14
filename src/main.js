@@ -6,11 +6,13 @@ import {
   View
 } from 'react-native';
 
+import Signin from './components/auth/signin';
+
 class Main extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text> BOTH </Text>
+        <Signin> BOTH </Signin>
       </View>
     );
   }
