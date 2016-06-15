@@ -6,6 +6,8 @@ import {
   StyleSheet
 } from 'react-native';
 
+import Button from '../common/button';
+
 class Signin extends Component {
   render() {
     return (
@@ -15,6 +17,7 @@ class Signin extends Component {
           <TextInput style={styles.input}/>
           <Text style={styles.label}>Password:</Text>
           <TextInput secureTextEntry={true} style={styles.input}/>
+          <Button text="blaah" onPress={null}></Button>
         </View>
         );
   }

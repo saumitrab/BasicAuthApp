@@ -8,14 +8,14 @@ import {
 class Button extends Component {
   render() {
     return (
-      <TouchableHighlight style={styles.button} underlayColor={'gray'}>
-        <Text style={styles.text}></Text>
+      <TouchableHighlight style={styles.button} underlayColor={'gray'} onPress={this.props.onPress}>
+        <Text style={styles.text}>{this.props.text}</Text>
       </TouchableHighlight>
     );
   }
 }
 
-const styles = StyleSheet.createClass({
+const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -24,7 +24,7 @@ const styles = StyleSheet.createClass({
     padding: 5,
     borderColor: 'black',
     marginTop: 10
-  }
+  },
   text: {
    flex: 1,
    alignSelf: 'center',
@@ -32,3 +32,5 @@ const styles = StyleSheet.createClass({
   }
 
 });
+
+export default Button;
