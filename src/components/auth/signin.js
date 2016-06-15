@@ -9,17 +9,39 @@ import {
 import Button from '../common/button';
 
 class Signin extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: ''
+    };
+  }
   render() {
+    // we update the state, thus calling render(), to keep the typed text persistant, read value from state! mind = blown
+    // Controlled state: Value is set by state, not by what user types
     return (
         <View style={styles.container}>
           <Text>Sign In</Text>
+
           <Text style={styles.label}>Username:</Text>
-          <TextInput style={styles.input}/>
+          <TextInput style={styles.input} 
+            onChangeText={(text) => this.setState({username: text})}
+            value={this.state.username}/>
+
           <Text style={styles.label}>Password:</Text>
-          <TextInput secureTextEntry={true} style={styles.input}/>
-          <Button text="blaah" onPress={null}></Button>
+          <TextInput secureTextEntry={true} 
+            style={styles.input}
+            onChangeText={(text) => this.setState({password: text})}
+            value={this.state.password}/>
+
+          <Button text="Sign In" onPress={this.onPress.bind(this)}></Button>
         </View>
         );
+  }
+  onPress() {
+    this.setState({
+      password: ''
+    });
   }
 }
 

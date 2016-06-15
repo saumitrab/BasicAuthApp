@@ -4,4 +4,7 @@
 - Implment backend
 - Implment basic authentication
 
+Notes:
+- Firebase implementation is TBD
+
 Built as an exercise for a course by Stephen Grider
