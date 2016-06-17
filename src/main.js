@@ -7,12 +7,14 @@ import {
 
 import Signin from './components/auth/signin';
 import Signup from './components/auth/signup';
+import Forum  from './components/forum/forum';
 
 //import firebase from 'firebase';
 
 const ROUTES = {
   signin: Signin,
-  signup: Signup
+  signup: Signup,
+  forum: Forum
 };
 
 class Main extends Component {

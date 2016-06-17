@@ -14,7 +14,8 @@ class Signup extends Component {
     this.state = {
       username: '',
       password: '',
-      passwordConfirmation: ''
+      passwordConfirmation: '',
+      errorText: ''
     }
   }
   render() {
@@ -24,20 +25,22 @@ class Signup extends Component {
 
           <Text style={styles.label}>Username:</Text>
           <TextInput style={styles.input} 
-            onChangeText={(text) => this.setState({username: text})}
+            onChangeText={(text) => this.setState({username: text, errorText: ''})}
             value={this.state.username}/>
 
           <Text style={styles.label}>Password:</Text>
           <TextInput secureTextEntry={true} 
             style={styles.input}
-            onChangeText={(text) => this.setState({password: text})}
+            onChangeText={(text) => this.setState({password: text, errorText: ''})}
             value={this.state.password}/>
 
           <Text style={styles.label}>Confirm Password:</Text>
           <TextInput secureTextEntry={true} 
             style={styles.input}
-            onChangeText={(text) => this.setState({passwordConfirmation: text})}
+            onChangeText={(text) => this.setState({passwordConfirmation: text, errorText: ''})}
             value={this.state.passwordConfirmation}/>
+
+          <Text style={styles.errorText}>{this.state.errorText}</Text>
 
           <Button text="Sign Up" onPress={this.onSignupPress.bind(this)}></Button>
           <Button text="Already Have an account" onPress={this.onSigninPress.bind(this)}></Button>
@@ -49,6 +52,14 @@ class Signup extends Component {
     this.props.navigator.pop();
   }
   onSignupPress(){
+    if (this.state.password !== this.state.passwordConfirmation) {
+      this.setState({errorText: 'Passwords mismatch'});
+    } else {
+      // Firebase signup
+      // on error, set errorText
+      // on success: new route
+      this.props.navigator.immediatelyResetRouteStack([{name: 'forum'}]); // notice array, we could put a list of route
+    }
 
   }
 }
@@ -59,6 +70,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'white'
+  },
+  errorText: {
+    color: 'red'
   },
   input: {
     padding: 4,
