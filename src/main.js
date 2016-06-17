@@ -2,13 +2,18 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
-  Text,
-  View
+  Navigator
 } from 'react-native';
 
 import Signin from './components/auth/signin';
-//const firebase = require('firebase');
-// import firebase from 'firebase';
+import Signup from './components/auth/signup';
+
+//import firebase from 'firebase';
+
+const ROUTES = {
+  signin: Signin,
+  signup: Signup
+};
 
 class Main extends Component {
   componentWillMount() {
@@ -24,20 +29,28 @@ class Main extends Component {
     //firebase.initializeApp(config);
     //</script>
   }
+
+  renderScene(route, navigator) {
+    // What we return will be placed on the stack
+    const MComponent = ROUTES[route.name]; // signin
+    return <MComponent />;
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Signin> BOTH </Signin>
-      </View>
+      <Navigator
+        style={styles.container}
+        initialRoute={{name: 'signup'}}
+        renderScene={this.renderScene}
+        configureScene={() => {return Navigator.SceneConfigs.FloatFromRight;}}
+      />
     );
   }
 }
 
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    flex: 1
   }
 });
 
