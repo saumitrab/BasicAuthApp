@@ -54,6 +54,8 @@ class Signup extends Component {
   onSignupPress(){
     if (this.state.password !== this.state.passwordConfirmation) {
       this.setState({errorText: 'Passwords mismatch'});
+    } else if ( this.state.username == '' || this.state.password == '' ) {
+      this.setState({errorText: 'Username or Password cannot be empty'});
     } else {
       // Firebase signup
       // on error, set errorText

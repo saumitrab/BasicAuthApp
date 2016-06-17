@@ -40,9 +40,10 @@ class Signin extends Component {
         );
   }
   onPress() {
-    this.setState({
-      password: ''
-    });
+    // Firebase auth
+    // on error set error
+    // on success, take user to the forum
+    this.props.navigator.immediatelyResetRouteStack([{name: 'forum'}]); // notice array, we could put a list of route
   }
   onSignupPress() {
     // we want to call something like navigator.push('signup')
