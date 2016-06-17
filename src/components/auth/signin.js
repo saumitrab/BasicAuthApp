@@ -35,6 +35,7 @@ class Signin extends Component {
             value={this.state.password}/>
 
           <Button text="Sign In" onPress={this.onPress.bind(this)}></Button>
+          <Button text="Sign Up" onPress={this.onSignupPress.bind(this)}></Button>
         </View>
         );
   }
@@ -42,6 +43,10 @@ class Signin extends Component {
     this.setState({
       password: ''
     });
+  }
+  onSignupPress() {
+    // we want to call something like navigator.push('signup')
+    this.props.navigator.push({name: 'signup'});
   }
 }
 

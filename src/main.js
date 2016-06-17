@@ -33,14 +33,14 @@ class Main extends Component {
   renderScene(route, navigator) {
     // What we return will be placed on the stack
     const MComponent = ROUTES[route.name]; // signin
-    return <MComponent />;
+    return <MComponent route={route} navigator={navigator} />;
   }
 
   render() {
     return (
       <Navigator
         style={styles.container}
-        initialRoute={{name: 'signup'}}
+        initialRoute={{name: 'signin'}}
         renderScene={this.renderScene}
         configureScene={() => {return Navigator.SceneConfigs.FloatFromRight;}}
       />
